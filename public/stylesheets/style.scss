@@ -1,0 +1,49 @@
+
+
+#cont-body{
+    margin-top: 100px;
+    .panel{
+        .panel-heading{
+            h2{
+                font-size: 60px;
+                color: #1ABABC;
+                text-align: center;
+            }
+            small{
+                color: #18A1A3;
+            }
+        }
+        .panel-body{
+            ul span{
+                color: black;
+                padding-right: 5px;
+            }
+            ul li{
+                padding-bottom: 10px;
+                color: #18A1A3;
+                text-decoration: none;
+                list-style: none;
+            }
+        }
+    }
+    
+    .panel-default{
+        .listcaption{
+            color: #1ABABC;
+            font-size: 40px;
+        }
+        .table{
+            padding: 2px;
+        }
+    }    
+}
+
+.login{
+    margin-top: 100px;
+    .panel{
+        .panel-heading{
+            color: #1ABABC;
+            font-size: 20px;
+        }
+    }
+}

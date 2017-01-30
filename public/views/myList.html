@@ -1,0 +1,61 @@
+<div class="row" id="cont-body" ng-init="getList()">
+    <div class="col-md-3">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2>{{user.username}}</h2>
+                <small>{{user.email}}</small>
+            </div>
+            <div class="panel-body home-list">
+                <ul>
+                    <a href="#"><li><span class="glyphicon glyphicon-home"></span>My List</li></a>
+                    <a href="#"><li><span class="glyphicon glyphicon-list"></span>See Users</li></a>
+                    <a href="#" ng-controller="AuthController" ng-click="logout()"><li><span class="glyphicon glyphicon-off"></span>Log Out</li></a>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <div class="panel panel-default">
+            <div class="panel-heading listcaption">My Wishlist</div>
+            <div class="panel-body">
+                <form ng-submit="addToList()">
+                    <input type="text" placeholder="Item name" ng-model="item.item_name">
+                    <input type="text" placeholder="Price" ng-model="item.price">
+                    <input type="text" placeholder="Event" ng-model="item.event">
+                    <input type="text" placeholder="Where to get it" ng-model="item.url">
+                    <button class="btn btn-sm btn-primary" type="submit">Submit</button>
+                </form>
+            </div>
+            <table class="table table-bordered table-responsive">
+                <tr>
+                    <th class="col-md-4">Wishlist</th>
+                    <th class="col-md-2">Price</th>
+                    <th class="col-md-2">Event</th>
+                    <th class="col-md-4">Action</th>
+                </tr>
+                <tr ng-repeat="item in items">
+                    <td id="itemname" ng-if="!editMode"><a href="{{item.url}}">{{item.item_name}}</a></td>
+                    <td ng-if="editMode">
+                            <input type="text" ng-model="item.item_name">
+                    </td>
+                    <td>R {{item.price}}</td>
+                    <td ng-if="editMode">
+                            <input type="text" ng-model="item.price">
+                    </td>
+                    <td>{{item.event}}</td>
+                    <td ng-if="editMode">
+                            <input type="text" ng-model="item.event">
+                    </td>
+                    <td class="col-md-3">
+                       <div id="action-buttons">
+                        <button class="btn btn-success btn-sm"><span class="glyphicon glyphicon-check"></span></button>
+                        <button class="btn btn-primary btn-sm" ng-show="updateButton" ng-click="updateButton = !updateButton; editMode = true"><span class="glyphicon glyphicon-wrench"></span></button>
+                        <button class="btn btn-warning btn-sm" ng-hide="updateButton" ng-click="updateButton = !updateButton; editMode = false"><span class="glyphicon glyphicon-saved"></span></button>
+                        <button class="btn btn-danger btn-sm" ng-click="deleteItem(item._id)"><span class="glyphicon glyphicon-trash"></span></button>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
